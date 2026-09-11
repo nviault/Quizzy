@@ -1,6 +1,6 @@
-# Feuille de Route et Plan d'Architecture - Kahoot Open Source
+# Feuille de Route et Plan d'Architecture - Quizzy Open Source
 
-Ce document présente la feuille de route complète et les jalons d'évolution pour la plateforme **Kahoot Open Source sur Kubernetes**, basée sur la conception définie dans [`architecture_kahoot_open_source_kubernetes.md`](./architecture_kahoot_open_source_kubernetes.md).
+Ce document présente la feuille de route complète et les jalons d'évolution pour la plateforme **Quizzy Open Source sur Kubernetes**, basée sur la conception définie dans [`architecture_kahoot_open_source_kubernetes.md`](./architecture_kahoot_open_source_kubernetes.md).
 
 ---
 
@@ -28,7 +28,7 @@ La trajectoire globale est découpée en 10 phases réparties sur des Sprints de
 ### Sprint 3 : Infrastructure Kubernetes & Packaging Helm (Phase 8)
 - **Objectif** : Déployer la plateforme sur un cluster Kubernetes avec haute disponibilité et routage avancé.
 - **Tâches** :
-  - Écriture des Helm Charts (`helm/kahoot`) avec configurations multi-environnements (`dev`, `test`, `prod`).
+  - Écriture des Helm Charts (`helm/quizzy`) avec configurations multi-environnements (`dev`, `test`, `prod`).
   - Configuration du Gateway API / Ingress NGINX pour les routes `/`, `/api`, `/ws`.
   - Intégration de CloudNativePG pour PostgreSQL HA et Redis Sentinel/Cluster Opérateur.
   - Mise en place des NetworkPolicies, SecurityContexts et External Secrets avec Vault.
@@ -40,7 +40,7 @@ La trajectoire globale est découpée en 10 phases réparties sur des Sprints de
 - **Objectif** : Instrumenter l'application et les pods pour un suivi en temps réel des métriques et des traces.
 - **Tâches** :
   - Intégration d'OpenTelemetry SDK dans NestJS (métriques WS, latence event loop, connexions actives).
-  - Déploiement de Prometheus pour la collecte des métriques métier (`kahoot_active_games`, `kahoot_answers_total`).
+  - Déploiement de Prometheus pour la collecte des métriques métier (`quizzy_active_games`, `quizzy_answers_total`).
   - Déploiement de Grafana avec dashboards prédéfinis pour le monitoring de charge.
   - Centralisation des logs via Loki et traçage distribué via Tempo.
 - **Critères d'acceptation** :

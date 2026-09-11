@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { StoreService } from '../store/store.service';
-import { Quiz } from '@kahoot/types';
+import { Quiz } from '@quizzy/types';
 
 @Injectable()
 export class QuizzesService {

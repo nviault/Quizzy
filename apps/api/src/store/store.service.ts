@@ -1,5 +1,5 @@
 import { Injectable, OnModuleInit, OnModuleDestroy, Logger } from '@nestjs/common';
-import { Game, GameStatus, Player, PlayerResponse, Quiz, LeaderboardEntry } from '@kahoot/types';
+import { Game, GameStatus, Player, PlayerResponse, Quiz, LeaderboardEntry } from '@quizzy/types';
 import Redis from 'ioredis';
 
 @Injectable()
@@ -47,7 +47,7 @@ export class StoreService implements OnModuleInit, OnModuleDestroy {
       id: 'quiz-demo-1',
       ownerId: 'admin',
       title: 'Culture Générale & Kubernetes',
-      description: 'Un quiz de démonstration pour tester la plateforme Kahoot Open Source',
+      description: 'Un quiz de démonstration pour tester la plateforme Quizzy Open Source',
       visibility: 'PUBLIC',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),

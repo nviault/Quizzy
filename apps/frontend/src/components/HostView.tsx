@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { socket } from '../services/socket';
-import { EventType } from '@kahoot/events';
-import { Quiz, Game, LeaderboardEntry } from '@kahoot/types';
+import { EventType } from '@quizzy/events';
+import { Quiz, Game, LeaderboardEntry } from '@quizzy/types';
 import { Play, Users, Trophy, ChevronRight, Award, CheckCircle } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
@@ -119,7 +119,7 @@ export const HostView: React.FC = () => {
                 </div>
               </div>
               <button
-                className="w-full bg-kahoot-blue hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2"
+                className="w-full bg-quizzy-blue hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2"
               >
                 <Play className="w-5 h-5" /> Lancer ce Quiz
               </button>
@@ -138,7 +138,7 @@ export const HostView: React.FC = () => {
       <div className="max-w-4xl mx-auto p-6 text-center">
         <div className="bg-white/10 backdrop-blur p-8 rounded-3xl border border-white/20 mb-8 shadow-2xl">
           <p className="text-xl uppercase tracking-widest text-gray-300 font-bold mb-2">Rejoignez la partie !</p>
-          <div className="bg-white text-kahoot-darkPurple py-4 px-8 rounded-2xl inline-block shadow-lg mb-6">
+          <div className="bg-white text-quizzy-darkPurple py-4 px-8 rounded-2xl inline-block shadow-lg mb-6">
             <span className="text-2xl font-bold block text-gray-500">PIN DU JEU :</span>
             <span className="text-6xl font-extrabold tracking-wider">{game.pin}</span>
           </div>
@@ -162,7 +162,7 @@ export const HostView: React.FC = () => {
               <p className="text-gray-400 italic">En attente de connexion des participants...</p>
             ) : (
               players.map(p => (
-                <span key={p.id} className="bg-kahoot-purple px-5 py-2 rounded-full font-bold text-lg shadow">
+                <span key={p.id} className="bg-quizzy-purple px-5 py-2 rounded-full font-bold text-lg shadow">
                   {p.nickname}
                 </span>
               ))
@@ -173,7 +173,7 @@ export const HostView: React.FC = () => {
             disabled={players.length === 0}
             onClick={handleStartGame}
             className={`w-full py-5 rounded-2xl font-black text-2xl uppercase tracking-wider transition flex items-center justify-center gap-3 ${
-              players.length > 0 ? 'bg-kahoot-green hover:bg-green-600 text-white cursor-pointer shadow-lg' : 'bg-gray-600 opacity-50 cursor-not-allowed'
+              players.length > 0 ? 'bg-quizzy-green hover:bg-green-600 text-white cursor-pointer shadow-lg' : 'bg-gray-600 opacity-50 cursor-not-allowed'
             }`}
           >
             <Play className="w-8 h-8" /> Commencer le jeu
@@ -184,7 +184,7 @@ export const HostView: React.FC = () => {
   }
 
   if (gameState === 'QUESTION' && currentQuestion) {
-    const colors = ['bg-kahoot-red', 'bg-kahoot-blue', 'bg-kahoot-yellow', 'bg-kahoot-green'];
+    const colors = ['bg-quizzy-red', 'bg-quizzy-blue', 'bg-quizzy-yellow', 'bg-quizzy-green'];
 
     return (
       <div className="max-w-4xl mx-auto p-6">
@@ -192,7 +192,7 @@ export const HostView: React.FC = () => {
           <span className="text-xl font-bold text-yellow-300">
             Question {currentQuestion.questionIndex + 1} / {currentQuestion.totalQuestions}
           </span>
-          <div className="w-16 h-16 rounded-full bg-yellow-400 text-kahoot-darkPurple flex items-center justify-center text-3xl font-extrabold shadow-lg">
+          <div className="w-16 h-16 rounded-full bg-yellow-400 text-quizzy-darkPurple flex items-center justify-center text-3xl font-extrabold shadow-lg">
             {timeLeft}
           </div>
         </div>
@@ -217,7 +217,7 @@ export const HostView: React.FC = () => {
 
         <button
           onClick={handleEndQuestionEarly}
-          className="w-full bg-kahoot-purple hover:bg-purple-800 text-white py-4 rounded-2xl font-bold text-xl flex items-center justify-center gap-2 shadow-lg"
+          className="w-full bg-quizzy-purple hover:bg-purple-800 text-white py-4 rounded-2xl font-bold text-xl flex items-center justify-center gap-2 shadow-lg"
         >
           <CheckCircle className="w-6 h-6" /> Afficher les résultats de la question
         </button>
@@ -233,7 +233,7 @@ export const HostView: React.FC = () => {
 
           <div className="bg-white text-gray-900 p-6 rounded-2xl mb-6">
             <p className="text-sm text-gray-500 font-bold uppercase">Bonne Réponse :</p>
-            <p className="text-2xl font-black text-kahoot-green">
+            <p className="text-2xl font-black text-quizzy-green">
               {currentQuestion?.answers.find((a: any) => a.id === questionEndedData.correctAnswerId)?.text}
             </p>
           </div>
@@ -247,7 +247,7 @@ export const HostView: React.FC = () => {
               <div
                 key={entry.playerId}
                 className={`p-4 rounded-2xl flex justify-between items-center font-bold text-xl ${
-                  entry.rank === 1 ? 'bg-yellow-400 text-kahoot-darkPurple shadow-lg scale-105' : 'bg-white/10 text-white'
+                  entry.rank === 1 ? 'bg-yellow-400 text-quizzy-darkPurple shadow-lg scale-105' : 'bg-white/10 text-white'
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -261,7 +261,7 @@ export const HostView: React.FC = () => {
 
           <button
             onClick={handleNextQuestion}
-            className="w-full bg-kahoot-blue hover:bg-blue-600 text-white py-5 rounded-2xl font-black text-2xl uppercase tracking-wider flex items-center justify-center gap-3 shadow-lg"
+            className="w-full bg-quizzy-blue hover:bg-blue-600 text-white py-5 rounded-2xl font-black text-2xl uppercase tracking-wider flex items-center justify-center gap-3 shadow-lg"
           >
             Question Suivante <ChevronRight className="w-8 h-8" />
           </button>
@@ -283,8 +283,8 @@ export const HostView: React.FC = () => {
               <div
                 key={entry.playerId}
                 className={`p-6 rounded-2xl font-black text-2xl flex justify-between items-center ${
-                  idx === 0 ? 'bg-yellow-400 text-kahoot-darkPurple text-3xl shadow-xl' :
-                  idx === 1 ? 'bg-gray-300 text-kahoot-darkPurple shadow-lg' :
+                  idx === 0 ? 'bg-yellow-400 text-quizzy-darkPurple text-3xl shadow-xl' :
+                  idx === 1 ? 'bg-gray-300 text-quizzy-darkPurple shadow-lg' :
                   'bg-amber-600 text-white shadow'
                 }`}
               >
@@ -296,7 +296,7 @@ export const HostView: React.FC = () => {
 
           <button
             onClick={() => setGameState('SELECT_QUIZ')}
-            className="w-full bg-kahoot-green hover:bg-green-600 text-white py-4 rounded-2xl font-bold text-xl shadow-lg"
+            className="w-full bg-quizzy-green hover:bg-green-600 text-white py-4 rounded-2xl font-bold text-xl shadow-lg"
           >
             Revenir au menu des Quiz
           </button>

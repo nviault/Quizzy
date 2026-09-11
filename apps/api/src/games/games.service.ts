@@ -1,7 +1,7 @@
 import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
 import { StoreService } from '../store/store.service';
-import { Game, GameStatus, Player, PlayerResponse } from '@kahoot/types';
-import { ScoringEngine } from '@kahoot/scoring';
+import { Game, GameStatus, Player, PlayerResponse } from '@quizzy/types';
+import { ScoringEngine } from '@quizzy/scoring';
 
 @Injectable()
 export class GamesService {

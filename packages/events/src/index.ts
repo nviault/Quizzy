@@ -1,4 +1,4 @@
-import { GameStatus, LeaderboardEntry, AnswerOption } from '@kahoot/types';
+import { GameStatus, LeaderboardEntry, AnswerOption } from '@quizzy/types';
 
 export enum EventType {
   PLAYER_JOINED = 'PLAYER_JOINED',

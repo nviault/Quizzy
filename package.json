@@ -1,5 +1,5 @@
 {
-  "name": "kahoot-open-source",
+  "name": "quizzy-open-source",
   "private": true,
   "scripts": {
     "build": "turbo build",

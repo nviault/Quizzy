@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { QuizzesService } from './quizzes.service';
-import { Quiz } from '@kahoot/types';
+import { Quiz } from '@quizzy/types';
 
 @Controller('quizzes')
 export class QuizzesController {

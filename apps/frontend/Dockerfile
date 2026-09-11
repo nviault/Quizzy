@@ -9,7 +9,7 @@ COPY packages ./packages
 COPY apps/frontend ./apps/frontend
 
 RUN pnpm install --frozen-lockfile
-RUN pnpm --filter "@kahoot/frontend" build
+RUN pnpm --filter "@quizzy/frontend" build
 
 FROM nginx:alpine AS runner
 

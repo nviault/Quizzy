@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { socket } from '../services/socket';
-import { EventType } from '@kahoot/events';
-import { AnswerOption } from '@kahoot/types';
+import { EventType } from '@quizzy/events';
+import { AnswerOption } from '@quizzy/types';
 import { Check, X, ShieldAlert, Award, Loader } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
@@ -101,8 +101,8 @@ export const PlayerView: React.FC = () => {
     return (
       <div className="max-w-md mx-auto p-6 text-center min-h-[80vh] flex flex-col justify-center">
         <div className="bg-white/10 backdrop-blur p-8 rounded-3xl border border-white/20 shadow-2xl">
-          <h1 className="text-4xl font-black mb-6 text-yellow-400 tracking-wide">
-            KAHOOT!
+          <h1 className="text-4xl font-black mb-6 text-yellow-400 tracking-wide uppercase">
+            Quizzy!
           </h1>
 
           {errorMsg && (
@@ -131,7 +131,7 @@ export const PlayerView: React.FC = () => {
             />
             <button
               type="submit"
-              className="w-full bg-kahoot-green hover:bg-green-600 text-white py-4 rounded-2xl font-black text-2xl uppercase tracking-wider shadow-lg transition"
+              className="w-full bg-quizzy-green hover:bg-green-600 text-white py-4 rounded-2xl font-black text-2xl uppercase tracking-wider shadow-lg transition"
             >
               Valider
             </button>
@@ -156,10 +156,10 @@ export const PlayerView: React.FC = () => {
 
   if (playerState === 'QUESTION' && currentQuestion) {
     const colorStyles = [
-      'bg-kahoot-red hover:brightness-110',
-      'bg-kahoot-blue hover:brightness-110',
-      'bg-kahoot-yellow hover:brightness-110',
-      'bg-kahoot-green hover:brightness-110'
+      'bg-quizzy-red hover:brightness-110',
+      'bg-quizzy-blue hover:brightness-110',
+      'bg-quizzy-yellow hover:brightness-110',
+      'bg-quizzy-green hover:brightness-110'
     ];
 
     return (
@@ -194,7 +194,7 @@ export const PlayerView: React.FC = () => {
     return (
       <div className="max-w-md mx-auto p-6 text-center min-h-[80vh] flex flex-col justify-center">
         <div className="bg-white/10 backdrop-blur p-8 rounded-3xl border border-white/20 shadow-2xl">
-          <div className="bg-yellow-400 text-kahoot-darkPurple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 font-black text-4xl shadow-lg">
+          <div className="bg-yellow-400 text-quizzy-darkPurple w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 font-black text-4xl shadow-lg">
             ✓
           </div>
           <h2 className="text-3xl font-black mb-2 text-white">Réponse enregistrée !</h2>
@@ -246,9 +246,9 @@ export const PlayerView: React.FC = () => {
           <h1 className="text-4xl font-black text-yellow-400 mb-2">FIN DU QUIZ</h1>
           <p className="text-xl text-white font-bold mb-6">{nickname}</p>
 
-          <div className="bg-white text-kahoot-darkPurple p-6 rounded-2xl mb-4 font-black">
+          <div className="bg-white text-quizzy-darkPurple p-6 rounded-2xl mb-4 font-black">
             <p className="text-sm uppercase text-gray-500">Score Final</p>
-            <p className="text-4xl text-kahoot-purple">{totalScore} pts</p>
+            <p className="text-4xl text-quizzy-purple">{totalScore} pts</p>
             {myRank && <p className="text-lg text-yellow-600 mt-1">Rang #{myRank}</p>}
           </div>
 
@@ -257,7 +257,7 @@ export const PlayerView: React.FC = () => {
               setPlayerState('LOGIN');
               setJoinedData(null);
             }}
-            className="w-full bg-kahoot-blue hover:bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg"
+            className="w-full bg-quizzy-blue hover:bg-blue-600 text-white py-4 rounded-2xl font-bold text-lg shadow-lg"
           >
             Rejoindre une autre partie
           </button>

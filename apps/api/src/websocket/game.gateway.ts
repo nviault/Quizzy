@@ -10,8 +10,8 @@ import {
 import { Server, Socket } from 'socket.io';
 import { StoreService } from '../store/store.service';
 import { GamesService } from '../games/games.service';
-import { EventType } from '@kahoot/events';
-import { GameStatus } from '@kahoot/types';
+import { EventType } from '@quizzy/events';
+import { GameStatus } from '@quizzy/types';
 import { Logger } from '@nestjs/common';
 
 @WebSocketGateway({

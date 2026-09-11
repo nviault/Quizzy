@@ -9,7 +9,7 @@ COPY packages ./packages
 COPY apps/api ./apps/api
 
 RUN pnpm install --frozen-lockfile
-RUN pnpm --filter "@kahoot/api" build
+RUN pnpm --filter "@quizzy/api" build
 
 FROM node:20-alpine AS runner
 

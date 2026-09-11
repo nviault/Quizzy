@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        kahoot: {
+        quizzy: {
           red: '#e21b3c',
           blue: '#1368ce',
           yellow: '#d89e00',
