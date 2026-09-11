@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: kahoot-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: kahoot
+      POSTGRES_PASSWORD: kahoot_password
+      POSTGRES_DB: kahoot_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: kahoot-redis
+    restart: always
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: kahoot-api
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      PORT: 3000
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      DATABASE_URL: postgresql://kahoot:kahoot_password@postgres:5432/kahoot_db?schema=public
+    depends_on:
+      - postgres
+      - redis
+
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/frontend/Dockerfile
+    container_name: kahoot-frontend
+    restart: always
+    ports:
+      - '8080:80'
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
+  redis_data:
